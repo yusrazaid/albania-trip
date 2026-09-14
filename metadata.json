@@ -1,0 +1,6 @@
+{
+  "name": "Albania Winter Expedition",
+  "description": "Interactive presentation deck and master reference dossier for the Albania Winter Expedition (Dec 3–6, 2026, 7 travelers).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
