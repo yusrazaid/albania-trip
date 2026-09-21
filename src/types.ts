@@ -21,6 +21,17 @@ export interface Waypoint {
   type: 'airport' | 'castle' | 'city' | 'ruins' | 'pass' | 'lagoon' | 'canyon';
 }
 
+export interface ScheduleItem {
+  time: string;
+  activity: string;
+  location: string;
+  details: string;
+  iconType: string;
+  isSpecial?: boolean;
+  specialBadge?: string;
+  note?: string;
+}
+
 export interface DayItinerary {
   day: number;
   date: string;
@@ -29,13 +40,7 @@ export interface DayItinerary {
   subtitle: string;
   hotel: string;
   breakfastIncluded: boolean;
-  schedule: {
-    time: string;
-    activity: string;
-    location: string;
-    details: string;
-    iconType: string;
-  }[];
+  schedule: ScheduleItem[];
 }
 
 export interface BudgetItem {

@@ -30,7 +30,7 @@ export const Slide1: React.FC<SlideProps> = ({ onOpenRouteModal }) => {
     <section className="page title-slide" id="slide-1">
       <div className="title-hero">
         <div className="title-badge-main">
-          BALKAN GRAND CIRCUIT • DEC 3 – 6, 2026 • 7 TRAVELERS
+          BALKAN GRAND CIRCUIT • DEC 3 – 6, 2026 • {EXPEDITION_META.travelers} TRAVELERS
         </div>
         <h1 className="title-main">Albania Winter Expedition</h1>
         <p className="title-sub">
@@ -512,26 +512,26 @@ export const Slide5: React.FC<SlideProps> = ({ onOpenScheduleModal }) => {
           >
             <div style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.1)', paddingBottom: '6px', marginBottom: '8px' }}>
               <h4 style={{ color: '#38bdf8', fontSize: '9pt', margin: 0, fontWeight: 800 }}>Thursday, Dec 3</h4>
-              <span style={{ fontSize: '7.5pt', color: '#94a3b8', fontWeight: 600 }}>Mountains & Stone City</span>
+              <span style={{ fontSize: '7.5pt', color: '#94a3b8', fontWeight: 600 }}>Tirana to Berat</span>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '7.8pt' }}>
               <div>
                 <strong style={{ color: '#38bdf8' }}>09:55</strong> <span style={{ color: '#e2e8f0' }}>Land at TIA on Ryanair RK8288.</span>
               </div>
               <div>
-                <strong style={{ color: '#38bdf8' }}>10:30</strong> <span style={{ color: '#e2e8f0' }}>Pick up Hyundai H1 Van from Radius.</span>
+                <strong style={{ color: '#38bdf8' }}>10:45</strong> <span style={{ color: '#e2e8f0' }}>Pick up Mercedes-Benz Vito 8-seater van.</span>
               </div>
               <div>
-                <strong style={{ color: '#38bdf8' }}>11:30</strong> <span style={{ color: '#e2e8f0' }}>Krujë Citadel & Bazaar. Grab wood-fired <em>*byrek*</em> lunch.</span>
+                <strong style={{ color: '#38bdf8' }}>14:30</strong> <span style={{ color: '#e2e8f0' }}>Check into Georgemishel Villa in Berat.</span>
               </div>
               <div>
-                <strong style={{ color: '#38bdf8' }}>14:00</strong> <span style={{ color: '#e2e8f0' }}>Scenic drive south on SH4 highway to Berat (135 km).</span>
+                <strong style={{ color: '#38bdf8' }}>15:30</strong> <span style={{ color: '#e2e8f0' }}>15th-century King Mosque & Turkish coffees in the square.</span>
               </div>
               <div>
-                <strong style={{ color: '#38bdf8' }}>16:30</strong> <span style={{ color: '#e2e8f0' }}>Check into Georgemishel Villa.</span>
+                <strong style={{ color: '#38bdf8' }}>17:30</strong> <span style={{ color: '#e2e8f0' }}>Gorica Bridge evening stroll (<em>*xhiro*</em>).</span>
               </div>
               <div>
-                <strong style={{ color: '#38bdf8' }}>18:00</strong> <span style={{ color: '#e2e8f0' }}>Gorica Bridge stroll & traditional Tavë Kosi baked lamb feast.</span>
+                <strong style={{ color: '#38bdf8' }}>19:00</strong> <span style={{ color: '#e2e8f0' }}>Chef Toska at Wildor Restaurant: authentic halal-friendly Tavë Kosi feast.</span>
               </div>
             </div>
           </div>
@@ -544,26 +544,26 @@ export const Slide5: React.FC<SlideProps> = ({ onOpenScheduleModal }) => {
           >
             <div style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.1)', paddingBottom: '6px', marginBottom: '8px' }}>
               <h4 style={{ color: '#38bdf8', fontSize: '9pt', margin: 0, fontWeight: 800 }}>Friday, Dec 4</h4>
-              <span style={{ fontSize: '7.5pt', color: '#94a3b8', fontWeight: 600 }}>Citadel & Adriatic Coast</span>
+              <span style={{ fontSize: '7.5pt', color: '#94a3b8', fontWeight: 600 }}>River Gorges to Gjirokastër</span>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '7.8pt' }}>
               <div>
                 <strong style={{ color: '#38bdf8' }}>08:30</strong> <span style={{ color: '#e2e8f0' }}>Complimentary hot breakfast at villa.</span>
               </div>
               <div>
-                <strong style={{ color: '#38bdf8' }}>10:00</strong> <span style={{ color: '#e2e8f0' }}>Tour living citadel of Kalaja e Beratit & Red Mosque ruins.</span>
+                <strong style={{ color: '#38bdf8' }}>09:30</strong> <span style={{ color: '#e2e8f0' }}>Scenic drive through Vjosa River Valley gorges.</span>
               </div>
               <div>
-                <strong style={{ color: '#38bdf8' }}>12:00</strong> <span style={{ color: '#e2e8f0' }}>Drive to ancient ruins of Apollonia.</span>
+                <strong style={{ color: '#38bdf8' }}>12:30</strong> <span style={{ color: '#e2e8f0' }}>Detour to Thermal Baths of Bënja & Ottoman bridge.</span>
               </div>
               <div>
-                <strong style={{ color: '#38bdf8' }}>13:30</strong> <span style={{ color: '#e2e8f0' }}>Explore Greek temple columns & 13th-century monastery museum.</span>
+                <strong style={{ color: '#38bdf8' }}>14:30</strong> <span style={{ color: '#e2e8f0' }}>Roadside lunch: hot wood-fired byrek & bakery stop.</span>
               </div>
               <div>
-                <strong style={{ color: '#38bdf8' }}>15:45</strong> <span style={{ color: '#e2e8f0' }}>Drive to Vlorë; check in at Sea & Sand Hotel.</span>
+                <strong style={{ color: '#fbbf24' }}>17:30</strong> <span style={{ color: '#fbbf24' }}>The Spit-Roast Feast (5:30 PM) at Uji i Ftohtë Tepelenë (Pre-order required).</span>
               </div>
               <div>
-                <strong style={{ color: '#38bdf8' }}>18:00</strong> <span style={{ color: '#e2e8f0' }}>Lungomare sunset walk & fresh grilled sea bass feast.</span>
+                <strong style={{ color: '#38bdf8' }}>20:00</strong> <span style={{ color: '#e2e8f0' }}>Check into Ottoman stone mansion in Gjirokastër.</span>
               </div>
             </div>
           </div>
@@ -576,26 +576,26 @@ export const Slide5: React.FC<SlideProps> = ({ onOpenScheduleModal }) => {
           >
             <div style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.1)', paddingBottom: '6px', marginBottom: '8px' }}>
               <h4 style={{ color: '#38bdf8', fontSize: '9pt', margin: 0, fontWeight: 800 }}>Saturday, Dec 5</h4>
-              <span style={{ fontSize: '7.5pt', color: '#94a3b8', fontWeight: 600 }}>Alpine Pass & Capital</span>
+              <span style={{ fontSize: '7.5pt', color: '#94a3b8', fontWeight: 600 }}>Gjirokastër & Llogara Pass</span>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '7.8pt' }}>
               <div>
-                <strong style={{ color: '#38bdf8' }}>08:30</strong> <span style={{ color: '#e2e8f0' }}>Breakfast buffet at Sea & Sand Hotel.</span>
+                <strong style={{ color: '#38bdf8' }}>08:30</strong> <span style={{ color: '#e2e8f0' }}>Morning coffee in Gjirokastër cobbled bazaar.</span>
               </div>
               <div>
-                <strong style={{ color: '#38bdf8' }}>09:30</strong> <span style={{ color: '#e2e8f0' }}>Ascend coastal hairpins to Llogara Pass (1,043m).</span>
+                <strong style={{ color: '#38bdf8' }}>09:30</strong> <span style={{ color: '#e2e8f0' }}>Explore 300-year-old Skenduli House (64 windows).</span>
               </div>
               <div>
-                <strong style={{ color: '#38bdf8' }}>11:30</strong> <span style={{ color: '#e2e8f0' }}>Walk wooden bridge to Zvërnec Island Monastery.</span>
+                <strong style={{ color: '#38bdf8' }}>11:00</strong> <span style={{ color: '#e2e8f0' }}>Descend into Cold War Tunnel bunker system.</span>
               </div>
               <div>
-                <strong style={{ color: '#38bdf8' }}>14:00</strong> <span style={{ color: '#e2e8f0' }}>Durrës Roman Amphitheatre & gyros.</span>
+                <strong style={{ color: '#38bdf8' }}>13:00</strong> <span style={{ color: '#e2e8f0' }}>Scenic coastal highway drive towards Riviera.</span>
               </div>
               <div>
-                <strong style={{ color: '#38bdf8' }}>16:30</strong> <span style={{ color: '#e2e8f0' }}>Check in at AM Apartments Tirana (park van in garage).</span>
+                <strong style={{ color: '#38bdf8' }}>15:30</strong> <span style={{ color: '#e2e8f0' }}>Top lodge of Llogara Pass: hot Çaj Mali (mountain tea) with honey.</span>
               </div>
               <div>
-                <strong style={{ color: '#38bdf8' }}>18:00</strong> <span style={{ color: '#e2e8f0' }}>Skanderbeg Christmas Market, Pyramid & vibrant Blloku nightlife.</span>
+                <strong style={{ color: '#38bdf8' }}>18:30</strong> <span style={{ color: '#e2e8f0' }}>Check in & evening dinner in Tirana / Riviera.</span>
               </div>
             </div>
           </div>
@@ -608,23 +608,23 @@ export const Slide5: React.FC<SlideProps> = ({ onOpenScheduleModal }) => {
           >
             <div style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.1)', paddingBottom: '6px', marginBottom: '8px' }}>
               <h4 style={{ color: '#38bdf8', fontSize: '9pt', margin: 0, fontWeight: 800 }}>Sunday, Dec 6</h4>
-              <span style={{ fontSize: '7.5pt', color: '#94a3b8', fontWeight: 600 }}>Canyon & Homeward Flight</span>
+              <span style={{ fontSize: '7.5pt', color: '#94a3b8', fontWeight: 600 }}>Krujë Antiquing & Departure</span>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '7.8pt' }}>
               <div>
-                <strong style={{ color: '#38bdf8' }}>09:30</strong> <span style={{ color: '#e2e8f0' }}>Scenic mountain drive northeast to Lake Bovilla.</span>
+                <strong style={{ color: '#38bdf8' }}>09:30</strong> <span style={{ color: '#e2e8f0' }}>Drive to mountain stronghold of Krujë.</span>
               </div>
               <div>
-                <strong style={{ color: '#38bdf8' }}>10:45</strong> <span style={{ color: '#e2e8f0' }}>Hike cliffside boardwalk for panoramic fjord-like reservoir views.</span>
+                <strong style={{ color: '#38bdf8' }}>11:00</strong> <span style={{ color: '#e2e8f0' }}>Tour Skanderbeg Citadel ramparts & fortress walls.</span>
               </div>
               <div>
-                <strong style={{ color: '#38bdf8' }}>13:30</strong> <span style={{ color: '#e2e8f0' }}>Pazari i Ri Bazaar: sizzling meatballs (<em>*qofte*</em>) & local honey.</span>
+                <strong style={{ color: '#38bdf8' }}>13:00</strong> <span style={{ color: '#e2e8f0' }}>1 hour in Old Ottoman Bazaar (copper pots, woodcrafts, kilim rugs).</span>
               </div>
               <div>
-                <strong style={{ color: '#38bdf8' }}>16:30</strong> <span style={{ color: '#e2e8f0' }}>Grand Park Artificial Lake walk & final raki toast.</span>
+                <strong style={{ color: '#38bdf8' }}>15:30</strong> <span style={{ color: '#e2e8f0' }}>Farewell roadside lunch & sizzling spiced qofte.</span>
               </div>
               <div>
-                <strong style={{ color: '#38bdf8' }}>19:30</strong> <span style={{ color: '#e2e8f0' }}>Refuel van, return to Radius at TIA.</span>
+                <strong style={{ color: '#38bdf8' }}>19:30</strong> <span style={{ color: '#e2e8f0' }}>Refuel Vito diesel tank (£100) & return van at TIA.</span>
               </div>
               <div>
                 <strong style={{ color: '#38bdf8' }}>22:50</strong> <span style={{ color: '#e2e8f0' }}>Ryanair flight RK8289 home to London STN.</span>
@@ -660,7 +660,7 @@ export const Slide6: React.FC<SlideProps> = ({ onOpenBudgetModal }) => {
           {/* Left Column: Master Group Ledger */}
           <div className="card" style={{ justifyContent: 'space-between' }}>
             <div>
-              <h3>📊 Master Group Ledger (£1,400 Total Cap)</h3>
+              <h3>📊 Master Group Ledger (£{FINANCIAL_BREAKDOWN.totalCap.toLocaleString()} Total Cap)</h3>
               <table style={{ marginTop: '6px' }}>
                 <thead>
                   <tr>
@@ -702,16 +702,16 @@ export const Slide6: React.FC<SlideProps> = ({ onOpenBudgetModal }) => {
             </div>
 
             <div style={{ fontSize: '7.8pt', color: '#94a3b8', marginTop: '6px' }}>
-              * Fixed upfront costs total £248.99 (£35.57 / person). Current net reimbursement due to Zaid Abbasi is +£516.59.
+              * Initial: £1,600 | Spent: £600 | Remaining: £1,000. Balance covers Vito fuel, spit-roast feast, teas, entries & dinners.
             </div>
           </div>
 
           {/* Right Column: Dining Superpower */}
           <div className="card" style={{ justifyContent: 'space-between' }}>
             <div>
-              <h3>🍷 What Does £573.13 Buy Us in Albania?</h3>
+              <h3>🍷 What Does £1,000 Remaining Cash Buy Us?</h3>
               <p style={{ fontSize: '8.2pt', lineHeight: 1.4, marginBottom: '8px' }}>
-                Because we secured exceptionally low rates on flights, villa lodging, and the 8-seater van, our remaining cash pool gives us an astonishing <strong>£81.88 per person (~€95 / 9,500 ALL)</strong> exclusively for dining and leisure!
+                Because flights, villas, and the 8-seater Vito were secured upfront for £600, our remaining cash pool gives us an astonishing <strong>£125 per person (~€147 / 14,750 ALL)</strong> for road trip fuel, traditional feasts, and mountain activities!
               </p>
 
               <div 
@@ -721,22 +721,22 @@ export const Slide6: React.FC<SlideProps> = ({ onOpenBudgetModal }) => {
                 title="Click to open dining simulator"
               >
                 <h4 style={{ fontSize: '9pt', margin: '0 0 3px 0' }}>
-                  Massive Daily Dining Allowance: ~£20.50 (€24) / Person / Day
+                  Spit-Roast Feast (£150) + 3 Dinners (£337) + £150 Lunches
                 </h4>
                 <p style={{ fontSize: '8pt', lineHeight: 1.35 }}>
-                  In the UK or Western Europe, £20 barely covers a fast-food meal. In Albania, it buys royalty-tier dining!
+                  Full group banquets, roasted lamb over wood embers, roadside bakeries, and mountain tea overlooking the river valleys!
                 </p>
               </div>
 
               <ul style={{ paddingLeft: '14px', fontSize: '8pt', margin: 0 }}>
                 <li style={{ marginBottom: '4px' }}>
-                  <strong>Traditional Meat Feasts:</strong> Full platters of slow-baked lamb (<em>*Tavë Kosi*</em>), stuffed peppers, meatballs (<em>*qofte*</em>), and fresh village salads cost just <strong>€6 to €8</strong> per person.
+                  <strong>The Spit-Roast Feast:</strong> Day 2 banquet at Uji i Ftohtë Tepelenë (mish qengji në hell dhe pilaf) for all 8 travelers (£150).
                 </li>
                 <li style={{ marginBottom: '4px' }}>
-                  <strong>Seafood on the Adriatic:</strong> Whole grilled sea bass and calamari platters along the Vlorë Lungomare cost just <strong>€10 to €12</strong>.
+                  <strong>Tavë Kosi & Adriatic Seafood:</strong> 3 group dinners (£337 total) in Berat, Vlorë/Gjirokastër, and Tirana.
                 </li>
                 <li>
-                  <strong>Drinks & Sweets:</strong> Local craft beers and wines are <strong>€1.50 to €2.50</strong>; hot mountain tea, espresso, and honey baklava are <strong>under €1.00</strong>.
+                  <strong>Teas & Castle Entries:</strong> £90 allocated for Çaj Mali and Turkish coffees, and £127 for castle and bunker entry tickets.
                 </li>
               </ul>
             </div>

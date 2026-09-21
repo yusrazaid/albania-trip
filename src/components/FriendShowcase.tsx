@@ -25,7 +25,7 @@ import {
   Flame,
   Volume2
 } from 'lucide-react';
-import { EXPEDITION_META, FINANCIAL_BREAKDOWN, BUDGET_ITEMS, ITINERARY, ALBANIAN_PHRASES } from '../data/expeditionData';
+import { EXPEDITION_META, FINANCIAL_BREAKDOWN, BUDGET_ITEMS, ITINERARY, ALBANIAN_PHRASES, REMAINING_BUDGET } from '../data/expeditionData';
 import { VanSeatingRoster } from './VanSeatingRoster';
 import { FeastSimulator } from './FeastSimulator';
 import { RouteMapVisualizer } from './RouteMapVisualizer';
@@ -334,40 +334,125 @@ export const FriendShowcase: React.FC<FriendShowcaseProps> = ({
 
           {/* Timeline Nodes */}
           <div className="space-y-2.5 pt-2">
-            {currentDayData.schedule.map((item, idx) => (
-              <div
-                key={idx}
-                className="bg-slate-950/50 hover:bg-slate-950/80 border border-slate-800/80 hover:border-slate-700 rounded-xl p-3.5 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3"
-              >
-                <div className="flex items-start gap-3">
-                  <span className="text-xs font-mono font-bold text-sky-400 bg-sky-950/60 border border-sky-500/30 px-2 py-1 rounded shrink-0">
-                    {item.time}
-                  </span>
-                  <div>
-                    <h5 className="text-xs sm:text-sm font-bold text-white">
-                      {item.activity}
-                    </h5>
-                    <p className="text-xs text-slate-400 mt-0.5 leading-relaxed">
-                      {item.details}
-                    </p>
+            {currentDayData.schedule.map((item, idx) => {
+              const isFeast = item.isSpecial;
+              return (
+                <div
+                  key={idx}
+                  className={`${
+                    isFeast
+                      ? 'bg-gradient-to-r from-amber-950/40 via-slate-900 to-amber-950/20 border-amber-500/50 shadow-lg shadow-amber-950/30'
+                      : 'bg-slate-950/50 hover:bg-slate-950/80 border-slate-800/80 hover:border-slate-700'
+                  } border rounded-xl p-3.5 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3`}
+                >
+                  <div className="flex items-start gap-3">
+                    <span className={`text-xs font-mono font-bold ${
+                      isFeast
+                        ? 'text-amber-400 bg-amber-950/80 border-amber-500/40'
+                        : 'text-sky-400 bg-sky-950/60 border-sky-500/30'
+                    } border px-2 py-1 rounded shrink-0`}>
+                      {item.time}
+                    </span>
+                    <div>
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <h5 className="text-xs sm:text-sm font-bold text-white">
+                          {item.activity}
+                        </h5>
+                        {item.specialBadge && (
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40 uppercase tracking-wider">
+                            {item.specialBadge}
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-xs text-slate-300 mt-0.5 leading-relaxed">
+                        {item.details}
+                      </p>
+                      {item.note && (
+                        <div className="mt-2 text-[11px] font-mono text-amber-300 bg-amber-950/60 border border-amber-500/40 px-2.5 py-1.5 rounded-lg inline-flex items-center gap-1.5">
+                          <span className="font-bold text-amber-400 uppercase text-[10px]">Note:</span>
+                          <span>{item.note}</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-1.5 text-xs text-slate-400 bg-slate-900 px-2.5 py-1 rounded-md border border-slate-800 self-start sm:self-auto shrink-0">
+                    <MapPin className="w-3 h-3 text-sky-400" />
+                    <span>{item.location}</span>
                   </div>
                 </div>
-
-                <div className="flex items-center gap-1.5 text-xs text-slate-400 bg-slate-900 px-2.5 py-1 rounded-md border border-slate-800 self-start sm:self-auto shrink-0">
-                  <MapPin className="w-3 h-3 text-sky-400" />
-                  <span>{item.location}</span>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* 6. FINANCIAL AUDIT & FEAST SIMULATOR */}
-      <section className="space-y-6">
+      {/* 6. TRIP LOGISTICS & BUDGET BREAKDOWN */}
+      <section className="space-y-6" id="trip-logistics">
         <div>
-          <span className="text-xs font-bold text-emerald-400 uppercase tracking-wider">Transparency & Economics</span>
-          <h2 className="text-xl font-bold text-white">Financial Reconciliation & Dining Superpower</h2>
+          <span className="text-xs font-bold text-emerald-400 uppercase tracking-wider">Trip Logistics</span>
+          <h2 className="text-xl font-bold text-white">Remaining Budget Breakdown</h2>
+        </div>
+
+        {/* Budget Highlight Banner: Initial: £1,600 | Spent: £600 | Remaining: £1,000 */}
+        <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 shadow-xl">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-slate-800">
+            <div>
+              <h3 className="text-sm font-bold text-white flex items-center gap-2">
+                <span>Trip Budget Reconciliation</span>
+                <span className="text-[10px] font-semibold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+                  £200 / Person Cap • {EXPEDITION_META.travelers} Travelers
+                </span>
+              </h3>
+              <p className="text-xs text-slate-400 mt-0.5">
+                Vito Fuel, spit-roast feasts, standard dinners, mountain teas, activities & contingency
+              </p>
+            </div>
+
+            {/* Exactly: Initial: £1,600 | Spent: £600 | Remaining: £1,000 */}
+            <div className="inline-flex items-center gap-3 sm:gap-4 bg-slate-950/90 border border-slate-800 px-4 py-2.5 rounded-xl font-mono text-xs shadow-inner">
+              <div>
+                <span className="text-[10px] text-slate-400 uppercase block font-sans font-medium">Initial</span>
+                <span className="text-sm font-bold text-white">£{REMAINING_BUDGET.initial.toLocaleString()}</span>
+              </div>
+              <span className="text-slate-700 font-bold">|</span>
+              <div>
+                <span className="text-[10px] text-slate-400 uppercase block font-sans font-medium">Spent</span>
+                <span className="text-sm font-bold text-amber-400">£{REMAINING_BUDGET.spent.toLocaleString()}</span>
+              </div>
+              <span className="text-slate-700 font-bold">|</span>
+              <div>
+                <span className="text-[10px] text-slate-400 uppercase block font-sans font-medium">Remaining</span>
+                <span className="text-sm font-bold text-emerald-400">£{REMAINING_BUDGET.remaining.toLocaleString()}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Remaining Budget Line Items */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 pt-5">
+            {REMAINING_BUDGET.items.map((item, idx) => (
+              <div 
+                key={idx}
+                className="bg-slate-950/60 border border-slate-800/80 hover:border-slate-700 rounded-xl p-3.5 flex flex-col justify-between transition-colors"
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-1.5">
+                    <h4 className="text-xs font-bold text-white">{item.category}</h4>
+                    <span className="text-xs font-mono font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded">
+                      £{item.amountGbp}
+                    </span>
+                  </div>
+                  <p className="text-[11px] text-slate-400 leading-relaxed">
+                    {item.details}
+                  </p>
+                </div>
+                <div className="mt-3 pt-2 border-t border-slate-900 flex items-center justify-between text-[10px] text-slate-400">
+                  <span>Per Person ({EXPEDITION_META.travelers} pax):</span>
+                  <span className="font-mono font-semibold text-slate-300">£{item.perPersonGbp.toFixed(2)}</span>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Master Group Ledger Table + What You Pay Card */}
@@ -376,7 +461,7 @@ export const FriendShowcase: React.FC<FriendShowcaseProps> = ({
             <div>
               <div className="flex items-center justify-between mb-3">
                 <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                  <span>📊 Master Group Ledger (£1,400 Total Cap)</span>
+                  <span>📊 Master Group Ledger (£1,600 Total Cap)</span>
                   <span className="text-[10px] font-semibold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
                     100% Mathematically Reconciled
                   </span>
@@ -395,7 +480,7 @@ export const FriendShowcase: React.FC<FriendShowcaseProps> = ({
                   <tbody className="divide-y divide-slate-800/60">
                     {BUDGET_ITEMS.map((item, idx) => {
                       const isRemaining = item.category.includes('Remaining');
-                      const isTotalPaid = item.category.includes('Total Already');
+                      const isTotalPaid = item.category.includes('Spent');
                       return (
                         <tr key={idx} className={isRemaining ? 'bg-emerald-950/20 font-semibold' : isTotalPaid ? 'bg-sky-950/20 font-semibold' : ''}>
                           <td className="py-2.5 px-3 text-slate-200">
@@ -428,7 +513,7 @@ export const FriendShowcase: React.FC<FriendShowcaseProps> = ({
             </div>
 
             <div className="text-[11px] text-slate-400 pt-3 mt-3 border-t border-slate-800">
-              * Fixed upfront costs total £248.99 (£35.57 / person). Current net reimbursement due to Zaid Abbasi is +£516.59.
+              * Initial budget: £1,600 | Spent upfront: £600 (£75.00 / person). Total remaining in-country cash pool: £1,000 (£125.00 / person).
             </div>
           </div>
 
@@ -444,27 +529,27 @@ export const FriendShowcase: React.FC<FriendShowcaseProps> = ({
 
               <div className="space-y-2 text-xs">
                 <div className="flex items-center justify-between py-1.5 border-b border-slate-800">
-                  <span className="text-slate-300">Shared Fixed Upfront (Hotels + Van Deposit):</span>
-                  <span className="font-mono font-bold text-white">£35.57</span>
+                  <span className="text-slate-300">Shared Fixed Upfront (Hotels & Flights Share):</span>
+                  <span className="font-mono font-bold text-white">£75.00</span>
                 </div>
                 <div className="flex items-center justify-between py-1.5 border-b border-slate-800">
-                  <span className="text-slate-300">Ryanair Flights (Return to London STN):</span>
-                  <span className="font-mono font-bold text-white">£50.39</span>
+                  <span className="text-slate-300">Vito Fuel (Diesel) Share:</span>
+                  <span className="font-mono font-bold text-white">£12.50</span>
                 </div>
                 <div className="flex items-center justify-between py-1.5 border-b border-slate-800">
-                  <span className="text-slate-300">Fuel Pool & TIA Car Desk Share:</span>
-                  <span className="font-mono font-bold text-white">£32.16</span>
+                  <span className="text-slate-300">Day 2 Spit-Roast Feast Share:</span>
+                  <span className="font-mono font-bold text-white">£18.75</span>
                 </div>
                 <div className="flex items-center justify-between py-1.5 border-b border-slate-800 text-emerald-400 font-semibold">
-                  <span>Your Free Spending Cash (Food & Leisure):</span>
-                  <span className="font-mono font-bold text-emerald-400">£81.88</span>
+                  <span>Your In-Country Remaining Cash Share:</span>
+                  <span className="font-mono font-bold text-emerald-400">£125.00</span>
                 </div>
               </div>
             </div>
 
             <div className="pt-4 mt-4 border-t border-slate-800/80 bg-slate-950/40 p-3 rounded-xl">
               <div className="text-[11px] text-slate-400">
-                You transfer only <strong>£35.57</strong> for upfront accommodation & car locking (plus your individual flight ticket). The remaining funds stay with you in cash for our daily tavern feasts!
+                You contribute only <strong>£75.00</strong> upfront for flight & accommodation reservations. The remaining <strong>£125.00</strong> funds your Vito fuel, castle entries, mountain teas, and roadside tavern feasts!
               </div>
             </div>
           </div>

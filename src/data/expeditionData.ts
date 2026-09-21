@@ -6,105 +6,200 @@ export const EXPEDITION_META = {
   dates: 'Dec 3 – 6, 2026',
   fullDateRange: 'Thursday, December 3 – Sunday, December 6, 2026',
   takeoffTimestamp: '2026-12-03T09:55:00', // TIA arrival
-  travelers: 7,
+  travelers: 8,
   masterCapGbp: 200,
-  totalPoolGbp: 1400,
+  initialBudgetGbp: 1600,
+  spentGbp: 600,
+  remainingGbp: 1000,
+  totalPoolGbp: 1600,
   leadOrganizer: 'Zaid Abbasi',
   organizerRole: 'Operations & Finance Command',
   flightInbound: 'Ryanair RK8288 (Lands TIA 09:55)',
   flightOutbound: 'Ryanair RK8289 (Departs TIA 22:50 to London STN)',
-  vehicle: 'Hyundai H1 Automatic 8-Seater',
+  vehicle: 'Mercedes-Benz Vito Automatic (8-Seater)',
   vehicleCargo: '3 Full Rows of Adult Seating + 850L Cargo Bay',
   vehicleRentalCompany: 'Radius Car Rental',
   vehicleBookingRef: 'G96389719',
   totalKm: 570,
   circuitSummary: '570 km Circuit • Dec 3–6, 2026',
-  circuitOverview: 'TIA Airport ➔ Krujë Citadel ➔ Berat ➔ Apollonia & Vlorë ➔ Llogara Pass ➔ Tirana Capital & Lake Bovilla',
-  googleMapsUrl: 'https://www.google.com/maps/dir/Tirana+International+Airport/Kruj%C3%AB/Berat/Apollonia+Archaeological+Park/Vlor%C3%AB/Llogara+Pass/Zv%C3%ABrnec+Monastery/Durr%C3%ABs/Tirana/Lake+Bovilla/Tirana+International+Airport',
+  circuitOverview: 'TIA Airport ➔ Berat ➔ River Gorges & Gjirokastër ➔ Llogara Pass ➔ Krujë Antiquing & Tirana',
+  googleMapsUrl: 'https://www.google.com/maps/dir/Tirana+International+Airport/Berat/Permet/Tepelene/Gjirokaster/Llogara+Pass/Kruje/Tirana+International+Airport',
+};
+
+export interface RemainingBudgetItem {
+  category: string;
+  amountGbp: number;
+  perPersonGbp: number;
+  status: string;
+  statusType: 'paid' | 'booked' | 'desk' | 'pool' | 'settled';
+  details: string;
+}
+
+export const REMAINING_BUDGET = {
+  initial: 1600,
+  spent: 600,
+  remaining: 1000,
+  items: [
+    {
+      category: 'Vito Fuel (Diesel)',
+      amountGbp: 100,
+      perPersonGbp: 12.50,
+      status: 'Budget Allocated',
+      statusType: 'pool' as const,
+      details: 'Full diesel tank coverage for the Mercedes-Benz Vito 8-seater across mountain passes and scenic routes.',
+    },
+    {
+      category: 'Day 2 Spit-Roast Feast',
+      amountGbp: 150,
+      perPersonGbp: 18.75,
+      status: 'Pre-Order Reserved',
+      statusType: 'pool' as const,
+      details: 'Restorant Uji i Ftohtë Tepelenë: Slow-roasted whole lamb on the spit & pilaf feast for 8.',
+    },
+    {
+      category: 'Standard Dinners (x3)',
+      amountGbp: 337,
+      perPersonGbp: 42.13,
+      status: 'Budget Allocated',
+      statusType: 'pool' as const,
+      details: 'Three group dinners across Berat (Wildor / Chef Toska), coastal Riviera, and Tirana.',
+    },
+    {
+      category: 'Roadside Lunches',
+      amountGbp: 150,
+      perPersonGbp: 18.75,
+      status: 'Budget Allocated',
+      statusType: 'pool' as const,
+      details: 'Wood-fired byrek me spinaq, grilled sausages (qofte), and quick roadside taverns.',
+    },
+    {
+      category: 'Coffees & Mountain Tea',
+      amountGbp: 90,
+      perPersonGbp: 11.25,
+      status: 'Budget Allocated',
+      statusType: 'pool' as const,
+      details: 'Turkish coffees in Berat & Krujë squares, and hot Çaj Mali with honey at the top of Llogara Pass.',
+    },
+    {
+      category: 'Activities & Castles',
+      amountGbp: 127,
+      perPersonGbp: 15.88,
+      status: 'Budget Allocated',
+      statusType: 'pool' as const,
+      details: 'Kalaja e Beratit, King Mosque, Bënja thermal area, 300yo Skenduli House & Cold War Tunnel.',
+    },
+    {
+      category: 'Contingency/Tolls/Parking',
+      amountGbp: 46,
+      perPersonGbp: 5.75,
+      status: 'Buffer Pool',
+      statusType: 'pool' as const,
+      details: 'Tolls, overnight parking, secured garage fees, and emergency reserve buffer.',
+    },
+  ],
 };
 
 export const BUDGET_ITEMS: BudgetItem[] = [
   {
-    category: 'Ryanair Flights (7 Travelers)',
-    committedGbp: 352.73,
-    perPersonGbp: 50.39,
-    status: 'Paid in Full',
-    statusType: 'paid',
-    details: 'Return flights locked in for all 7 travelers from London STN to Tirana TIA.',
-  },
-  {
-    category: 'Accommodations (All 3 Nights)',
-    committedGbp: 235.32,
-    perPersonGbp: 33.62,
-    status: 'All 3 Confirmed',
-    statusType: 'booked',
-    details: 'Night 1: Berat Stone Villa (£76.38 / €89) • Night 2: Vlorë Seafront Hotel (£83.42 / €97.20) • Night 3: Tirana Apartments (£75.52 / €88).',
-  },
-  {
-    category: 'Van Pre-Payment (Radius)',
-    committedGbp: 13.67,
-    perPersonGbp: 1.95,
-    status: 'Paid ($17.87)',
-    statusType: 'paid',
-    details: 'Radius Car Rental reservation secured online for Hyundai H1 8-seater (Ref: G96389719).',
-  },
-  {
-    category: 'Total Already Paid Online (Zaid)',
-    committedGbp: 601.72,
-    perPersonGbp: 85.96,
-    status: 'Fully Settled',
+    category: 'Upfront Commitments (Spent)',
+    committedGbp: 600.00,
+    perPersonGbp: 75.00,
+    status: 'Paid Online',
     statusType: 'settled',
-    details: 'All upfront flight, hotel reservations, and rental deposits paid online by lead organizer.',
+    details: 'Initial upfront group commitments: flights, villa and hotel booking deposits.',
   },
   {
-    category: 'Car Balance Due at TIA Desk (€140)',
-    committedGbp: 120.15,
-    perPersonGbp: 17.16,
-    status: 'Pay on Dec 3',
-    statusType: 'desk',
-    details: 'EUR 140.00 cash/card due at airport counter upon pickup + EUR 1,000 credit card hold.',
-  },
-  {
-    category: 'Estimated Fuel Pool (570 km circuit)',
-    committedGbp: 105.00,
-    perPersonGbp: 15.00,
+    category: 'Vito Fuel (Diesel)',
+    committedGbp: 100.00,
+    perPersonGbp: 12.50,
     status: 'Reserved',
     statusType: 'pool',
-    details: 'Budgeted for 570 km circuit across Krujë, Berat, Vlorë, Llogara Pass, Tirana & Bovilla.',
+    details: 'Full diesel tank coverage for Mercedes-Benz Vito 8-seater across the 570 km circuit.',
   },
   {
-    category: 'True Remaining Food & Fun Pool',
-    committedGbp: 573.13,
-    perPersonGbp: 81.88,
-    status: 'Pure Cash Pool',
+    category: 'Day 2 Spit-Roast Feast',
+    committedGbp: 150.00,
+    perPersonGbp: 18.75,
+    status: 'Pre-Order Pool',
     statusType: 'pool',
-    details: 'Pure cash pool reserved strictly for royal feast dining, mountain tea, and leisure!',
+    details: 'Restorant Uji i Ftohtë Tepelenë (Pre-order required: 8 persona, Mish qengji në hell dhe pilaf).',
+  },
+  {
+    category: 'Standard Dinners (x3)',
+    committedGbp: 337.00,
+    perPersonGbp: 42.13,
+    status: 'Dining Pool',
+    statusType: 'pool',
+    details: 'Three group dinners across Berat (Wildor / Chef Toska), coastal Riviera, and Tirana.',
+  },
+  {
+    category: 'Roadside Lunches',
+    committedGbp: 150.00,
+    perPersonGbp: 18.75,
+    status: 'Snack Pool',
+    statusType: 'pool',
+    details: 'Hot wood-fired byrek, fresh gyros, grilled qofte, and bakery stops.',
+  },
+  {
+    category: 'Coffees & Mountain Tea',
+    committedGbp: 90.00,
+    perPersonGbp: 11.25,
+    status: 'Café Pool',
+    statusType: 'pool',
+    details: 'Turkish coffees in city squares & hot Çaj Mali with honey at the top of Llogara Pass.',
+  },
+  {
+    category: 'Activities & Castles',
+    committedGbp: 127.00,
+    perPersonGbp: 15.88,
+    status: 'Activity Pool',
+    statusType: 'pool',
+    details: 'Castle admissions, 15th-c King Mosque, Bënja, Skenduli House, and Cold War Tunnel.',
+  },
+  {
+    category: 'Contingency/Tolls/Parking',
+    committedGbp: 46.00,
+    perPersonGbp: 5.75,
+    status: 'Contingency',
+    statusType: 'pool',
+    details: 'Emergency buffer, tolls, and secure overnight van parking.',
+  },
+  {
+    category: 'Total Remaining Cash Pool',
+    committedGbp: 1000.00,
+    perPersonGbp: 125.00,
+    status: 'In-Country Pool',
+    statusType: 'pool',
+    details: 'Initial: £1,600 | Spent: £600 | Remaining: £1,000 completely allocated across group needs.',
   },
 ];
 
 export const FINANCIAL_BREAKDOWN = {
-  totalCap: 1400.0,
-  totalCommittedOnline: 601.72,
-  totalCommitted: 601.72,
-  fixedUpfrontCosts: 248.99, // hotel + car pre-pay
-  fixedUpfrontPerPerson: 35.57, // per person core fixed share (excluding flight)
-  fixedPerPerson: 35.57,
-  sharedUpfrontCommitment: 248.99,
-  sharedUpfrontPerPerson: 35.57,
-  reimbursementDueToZaid: 516.59,
-  reimbursementToZaid: 516.59,
-  carDeskBalanceGbp: 120.15, // €140.00
-  carDeskBalanceEur: 140.0,
-  estimatedFuelPoolGbp: 105.0,
+  totalCap: 1600.0,
+  initialBudget: 1600.0,
+  spent: 600.0,
+  remaining: 1000.0,
+  totalCommittedOnline: 600.0,
+  totalCommitted: 600.0,
+  fixedUpfrontCosts: 600.0,
+  fixedUpfrontPerPerson: 75.0,
+  fixedPerPerson: 75.0,
+  sharedUpfrontCommitment: 600.0,
+  sharedUpfrontPerPerson: 75.0,
+  reimbursementDueToZaid: 600.0,
+  reimbursementToZaid: 600.0,
+  carDeskBalanceGbp: 0,
+  carDeskBalanceEur: 0,
+  estimatedFuelPoolGbp: 100.0,
   tiranaNight3CashEur: 88.0,
-  trueRemainingFoodAndFunGbp: 573.13,
-  remainingPool: 573.13,
-  freeDiningPoolGbp: 573.13,
-  foodPoolPerPersonGbp: 81.88,
-  foodPoolPerPersonEur: 96.6,
-  dailyDiningAllowanceGbp: 20.5,
-  dailyDiningAllowanceEur: 24.0,
-  dailyFoodPerPersonGbp: 20.5,
+  trueRemainingFoodAndFunGbp: 1000.0,
+  remainingPool: 1000.0,
+  freeDiningPoolGbp: 487.0, // 150 feast + 337 dinners
+  foodPoolPerPersonGbp: 82.50,
+  foodPoolPerPersonEur: 97.0,
+  dailyDiningAllowanceGbp: 22.0,
+  dailyDiningAllowanceEur: 26.0,
+  dailyFoodPerPersonGbp: 22.0,
 };
 
 export const SLIDE_METAS = [
@@ -254,68 +349,222 @@ export const ITINERARY: DayItinerary[] = [
     day: 1,
     date: 'Dec 3, 2026',
     weekday: 'Thursday',
-    title: 'Mountains & Stone City',
-    subtitle: 'From TIA to Krujë Citadel and the 1,000 Windows of Berat',
+    title: 'Tirana to Berat',
+    subtitle: 'From TIA to 15th-Century King Mosque, Historic Squares & Tavë Kosi Feast',
     hotel: 'Georgemishel Guest House (Berat)',
     breakfastIncluded: true,
     schedule: [
-      { time: '09:55', activity: 'Land at TIA on Ryanair RK8288', location: 'Tirana International Airport', details: 'Touchdown in Albania. Meet & Greet at TIA Terminal with Radius Car Rental agent.', iconType: 'plane' },
-      { time: '10:30', activity: 'Pick up Hyundai H1 Van from Radius', location: 'TIA Rental Desk', details: 'Collect 8-seater automatic van, inspect vehicle, settle EUR 140 desk balance and place EUR 1,000 card hold.', iconType: 'van' },
-      { time: '11:30', activity: 'Krujë Citadel & Bazaar Lunch', location: 'Krujë (600m)', details: '400-year-old cobbled bazaar, Skanderbeg fortress walls, and hot wood-fired byrek lunch (~€1.50).', iconType: 'castle' },
-      { time: '14:00', activity: 'Scenic Drive South on SH4 Highway', location: 'SH4 to Berat (135 km)', details: 'Cruising through central Albanian hills in winter daylight before sunset.', iconType: 'car' },
-      { time: '16:30', activity: 'Check into Georgemishel Villa', location: 'Berat Historic Quarter', details: 'Private stone Ottoman villa booked exclusively for our 7 group members (£76.38 total / €89).', iconType: 'bed' },
-      { time: '18:00', activity: 'Gorica Bridge Stroll & Tavë Kosi Feast', location: 'Mangalem & Gorica', details: 'Evening walk (xhiro) on illuminated Gorica bridge, followed by traditional Tavë Kosi baked lamb in spiced yogurt (~€7–€9).', iconType: 'utensils' },
+      { 
+        time: '09:55', 
+        activity: 'Land at TIA on Ryanair RK8288', 
+        location: 'Tirana International Airport', 
+        details: 'Touchdown in Albania. Meet & Greet at TIA Terminal with rental agent to collect Mercedes-Benz Vito 8-seater van.', 
+        iconType: 'plane' 
+      },
+      { 
+        time: '10:45', 
+        activity: 'Pick up Mercedes Vito 8-Seater Van', 
+        location: 'TIA Rental Desk', 
+        details: 'Collect spacious 8-seater diesel van, inspect vehicle, load cabin bags, and prepare for departure south.', 
+        iconType: 'van' 
+      },
+      { 
+        time: '12:00', 
+        activity: 'Scenic Drive South towards Historic Berat', 
+        location: 'SH4 Highway (135 km)', 
+        details: 'Cruising through central Albanian hills and olive groves in crisp winter daylight.', 
+        iconType: 'car' 
+      },
+      { 
+        time: '14:30', 
+        activity: 'Check into Georgemishel Villa & Settle In', 
+        location: 'Mangalem Historic Quarter', 
+        details: 'Private stone Ottoman villa reserved exclusively for our 8 group members.', 
+        iconType: 'bed' 
+      },
+      { 
+        time: '15:30', 
+        activity: '15th-Century King Mosque & Traditional Turkish Coffees', 
+        location: 'Berat Citadel & Town Square', 
+        details: 'Afternoon activity includes visiting the historic 15th-century King Mosque (Xhamia e Mbretit) and enjoying traditional Turkish coffees in the square while taking in the Ottoman architecture.', 
+        iconType: 'coffee' 
+      },
+      { 
+        time: '17:30', 
+        activity: 'Gorica Bridge Evening Stroll (Xhiro)', 
+        location: 'Gorica Bridge', 
+        details: 'Sunset riverside stroll along the illuminated Osum River facing the UNESCO white stone facades.', 
+        iconType: 'camera' 
+      },
+      { 
+        time: '19:00', 
+        activity: 'Authentic Feast at Wildor Restaurant by Chef Toska', 
+        location: 'Wildor Restaurant, Berat', 
+        details: 'Dinner prepared by Chef Toska at Wildor Restaurant for authentic, halal-friendly Albanian dishes (recommend Tavë Kosi — tender slow-baked lamb in savory spiced garlic yogurt with rice).', 
+        iconType: 'utensils' 
+      },
     ],
   },
   {
     day: 2,
     date: 'Dec 4, 2026',
     weekday: 'Friday',
-    title: 'Citadel & Adriatic Coast',
-    subtitle: 'Kalaja e Beratit, 2,500yo Apollonia & Vlorë Sunset Sea Bass',
-    hotel: 'Sea & Sand Hotel (Vlorë)',
+    title: 'River Gorges to Gjirokastër',
+    subtitle: 'Vjosa River Valley, Thermal Baths of Bënja & The Spit-Roast Feast',
+    hotel: 'Stone City Hotel / Villa (Gjirokastër)',
     breakfastIncluded: true,
     schedule: [
-      { time: '08:30', activity: 'Complimentary Hot Breakfast at Villa', location: 'Georgemishel Villa', details: 'Fresh Albanian honey, eggs, feta cheese, hot bread and Turkish coffee.', iconType: 'coffee' },
-      { time: '10:00', activity: 'Tour Living Citadel of Kalaja e Beratit', location: 'Berat Citadel', details: 'Inhabited medieval fortress, Byzantine churches, Red Mosque ruins and panoramic valley vistas.', iconType: 'castle' },
-      { time: '12:00', activity: 'Drive to Ancient Ruins of Apollonia', location: 'Myzeqe Plain', details: 'Scenic countryside drive towards antiquity.', iconType: 'car' },
-      { time: '13:30', activity: 'Explore Greek Temple & Byzantine Museum', location: 'Apollonia Park', details: 'Ancient 6-column Bouleuterion facade, amphitheatre, and 13th-century St. Mary Monastery courtyard.', iconType: 'landmark' },
-      { time: '15:45', activity: 'Drive to Vlorë & Sea & Sand Check-in', location: 'Vlorë Riviera', details: 'Superior Quadruple + Classic Triple seafront rooms right on the coast (£83.42 total / €97.20).', iconType: 'bed' },
-      { time: '18:00', activity: 'Lungomare Sunset Walk & Seafood Feast', location: 'Vlorë Lungomare', details: 'Fresh whole grilled Adriatic sea bass, calamari, village salads, and cold local Korça beers (~€10–€12/person).', iconType: 'utensils' },
+      { 
+        time: '08:30', 
+        activity: 'Complimentary Hot Breakfast at Villa', 
+        location: 'Georgemishel Villa', 
+        details: 'Fresh Albanian honey, farm eggs, mountain feta cheese, hot bread and warm tea.', 
+        iconType: 'coffee' 
+      },
+      { 
+        time: '09:30', 
+        activity: 'Scenic Drive along Vjosa River Valley', 
+        location: 'SH75 Mountain Route', 
+        details: 'Spectacular drive through the river gorges of the Vjosa — Europe’s last wild river.', 
+        iconType: 'car' 
+      },
+      { 
+        time: '12:30', 
+        activity: 'Scenic Detour: Thermal Baths of Bënja', 
+        location: 'Bënja Thermal Baths (Përmet)', 
+        details: 'A scenic detour to the Thermal Baths of Bënja to stretch legs near the historic Ottoman stone bridge (Ura e Kadiut) and take in the natural canyon sulfur pools.', 
+        iconType: 'mountain' 
+      },
+      { 
+        time: '14:30', 
+        activity: 'Roadside Lunch & Scenic Mountain Crossing', 
+        location: 'Përmet to Tepelenë', 
+        details: 'Hot flaky wood-fired byrek, grilled sausages, and quick mountain bakery snacks.', 
+        iconType: 'lunch' 
+      },
+      { 
+        time: '17:30', 
+        activity: 'The Spit-Roast Feast (5:30 PM)', 
+        location: 'Restorant Uji i Ftohtë Tepelenë', 
+        details: 'Highlight dinner over cascading mountain springs: succulent whole lamb slow-roasted on the spit over natural olive embers, served with fragrant golden pilaf and village sides.', 
+        iconType: 'utensils',
+        isSpecial: true,
+        specialBadge: 'Highlight Dinner Feast',
+        note: 'Pre-order required via hotel: "8 persona, Mish qengji në hell dhe pilaf"'
+      },
+      { 
+        time: '20:00', 
+        activity: 'Check-in to Stone City Lodging in Gjirokastër', 
+        location: 'Gjirokastër Old Town', 
+        details: 'Arrive in the UNESCO fortified stone city and check into historic Ottoman mansion quarters.', 
+        iconType: 'bed' 
+      },
     ],
   },
   {
     day: 3,
     date: 'Dec 5, 2026',
     weekday: 'Saturday',
-    title: 'Alpine Pass & Capital',
-    subtitle: 'Llogara Summit (1,043m), Zvërnec Lagoon & Tirana Nightlife',
-    hotel: 'AM Apartment Tirana (Vila Park)',
-    breakfastIncluded: false,
+    title: 'Gjirokastër & Llogara Pass',
+    subtitle: '300yo Skenduli House, Cold War Tunnel & High Alpine Mountain Tea',
+    hotel: 'AM Apartment / Riviera Suites (Tirana/Vlorë)',
+    breakfastIncluded: true,
     schedule: [
-      { time: '08:30', activity: 'Breakfast Buffet at Sea & Sand Hotel', location: 'Vlorë', details: 'Included seafront buffet before embarking into the high coastal mountains.', iconType: 'coffee' },
-      { time: '09:30', activity: 'Ascend Coastal Hairpins to Llogara Pass (1,043m)', location: 'Ceraunian Mountain Ridge', details: 'Spectacular alpine road climbing high above the Ionian Sea. Mountain tea (Çaj Mali) & sheep yogurt with wild walnuts.', iconType: 'mountain' },
-      { time: '11:30', activity: 'Walk Wooden Bridge to Zvërnec Island', location: 'Narta Lagoon', details: 'Wooden boardwalk over tidal lagoon to secluded 13th-century pine-forest monastery.', iconType: 'compass' },
-      { time: '14:00', activity: 'Durrës Roman Amphitheatre & Gyros', location: 'Durrës', details: 'Balkan’s largest Roman arena ruins and fast tasty Mediterranean gyros.', iconType: 'landmark' },
-      { time: '16:30', activity: 'Check in at AM Apartments Tirana', location: 'Vila Park, Tirana', details: '2 deluxe modern apartments with private bathrooms and secure garage for our van (£75.52 total / €88 in EUR cash).', iconType: 'bed' },
-      { time: '18:00', activity: 'Skanderbeg Christmas Market & Blloku Nightlife', location: 'Tirana Center', details: 'Giant holiday tree, carousel, roasted chestnuts, the Pyramid of Tirana, and cocktail lounges in Blloku.', iconType: 'sparkles' },
+      { 
+        time: '08:30', 
+        activity: 'Morning Coffee in Gjirokastër Cobbled Bazaar', 
+        location: 'Old Bazaar Quarter', 
+        details: 'Rich espresso and mountain vistas amidst steep slate-roofed Ottoman architecture.', 
+        iconType: 'coffee' 
+      },
+      { 
+        time: '09:30', 
+        activity: 'Explore 300-Year-Old Skenduli House', 
+        location: 'Skenduli House, Gjirokastër', 
+        details: 'Exploring the remarkably preserved 300-year-old Skenduli House — featuring 64 windows, 9 fireplaces, and intricate carved Ottoman woodwork.', 
+        iconType: 'landmark' 
+      },
+      { 
+        time: '11:00', 
+        activity: 'Descend into the Cold War Tunnel Bunker System', 
+        location: 'Cold War Bunker beneath Castle', 
+        details: 'Descending into the Cold War Tunnel bunker system beneath the castle — an eerie subterranean labyrinth of dozens of rooms constructed in secret during the communist era.', 
+        iconType: 'compass' 
+      },
+      { 
+        time: '13:00', 
+        activity: 'Scenic Coastal Highway Drive towards Riviera', 
+        location: 'Ionian Highway to Llogara', 
+        details: 'Sweeping coastal panoramas as the road climbs toward the towering Ceraunian mountain ridge.', 
+        iconType: 'car' 
+      },
+      { 
+        time: '15:30', 
+        activity: 'Top Lodge of Llogara Pass & Hot Mountain Tea (Çaj Mali)', 
+        location: 'Llogara Pass Summit (1,043m)', 
+        details: 'In the afternoon, stop at the top lodge of the Llogara Pass to drink hot Albanian mountain tea (Çaj Mali) with honey and savor sheep yogurt drizzled with mountain walnuts overlooking the Ionian Sea.', 
+        iconType: 'mountain' 
+      },
+      { 
+        time: '18:30', 
+        activity: 'Check in & Evening Dinner in Tirana / Riviera', 
+        location: 'Capital / Riviera Promenade', 
+        details: 'Evening stroll, dinner at local grill tavern, and vibrant Saturday night atmosphere.', 
+        iconType: 'utensils' 
+      },
     ],
   },
   {
     day: 4,
     date: 'Dec 6, 2026',
     weekday: 'Sunday',
-    title: 'Canyon & Homeward Flight',
-    subtitle: 'Bovilla Fjord Cliff Hike, Pazari i Ri Feast & Flight Home',
+    title: 'Krujë Antiquing & Departure',
+    subtitle: 'Old Ottoman Bazaar Treasures, Skanderbeg Fortress & Flight Home',
     hotel: 'Homebound Flight (Ryanair RK8289 to London STN)',
     breakfastIncluded: false,
     schedule: [
-      { time: '09:30', activity: 'Scenic Mountain Drive to Lake Bovilla', location: 'Bovilla Mountain Road', details: 'Drive northeast into rugged alpine hills above the capital.', iconType: 'car' },
-      { time: '10:45', activity: 'Hike Cliffside Boardwalk Over Bovilla Reservoir', location: 'Lake Bovilla Canyon', details: 'Climb wooden stairs to cantilevered rocky balcony with breathtaking fjord-like views over turquoise water.', iconType: 'camera' },
-      { time: '13:30', activity: 'Pazari i Ri Bazaar: Sizzling Meatballs (Qofte)', location: 'New Bazaar Tirana', details: 'Atmospheric market feast of grilled spiced qofte, roasted peppers, creamy cheeses, and fresh bread.', iconType: 'utensils' },
-      { time: '16:30', activity: 'Grand Park Artificial Lake Walk & Final Raki Toast', location: 'Tirana Grand Park', details: 'Relaxed golden hour lakeside stroll, souvenir honey/olive oil shopping, and celebratory raki toast.', iconType: 'coffee' },
-      { time: '19:30', activity: 'Refuel Van & Return to Radius at TIA', location: 'TIA Terminal', details: 'Fill Hyundai H1 diesel tank, drop keys with agent, pass airport security with ease.', iconType: 'van' },
-      { time: '22:50', activity: 'Ryanair Flight RK8289 Home to London STN', location: 'Departure Gate', details: 'Touchdown in London with memories of an epic Balkan expedition strictly at £200 per person!', iconType: 'plane' },
+      { 
+        time: '09:30', 
+        activity: 'Drive to Mountain Stronghold of Krujë', 
+        location: 'Krujë Mountain Road', 
+        details: 'Climbing the dramatic pine-clad mountain road toward the historical stronghold of Skanderbeg.', 
+        iconType: 'car' 
+      },
+      { 
+        time: '11:00', 
+        activity: 'Tour Skanderbeg Citadel & Fortress Walls', 
+        location: 'Kalaja e Krujës', 
+        details: 'Explore the medieval citadel ramparts with unbroken panoramic views across the coastal plains.', 
+        iconType: 'castle' 
+      },
+      { 
+        time: '13:00', 
+        activity: 'Antiquing in the Old Ottoman Bazaar', 
+        location: 'Pazari i Vjetër i Krujës', 
+        details: 'Spend an hour in the Old Ottoman Bazaar — the best spot in Albania to hunt for vintage copper coffee pots, local woodcrafts, and traditional hand-woven kilim rugs.', 
+        iconType: 'sparkles' 
+      },
+      { 
+        time: '15:30', 
+        activity: 'Farewell Roadside Lunch & Sizzling Qofte', 
+        location: 'Krujë Foothills', 
+        details: 'Final feast of wood-fired byrek, seasoned grilled meatballs (qofte), roasted peppers, and sweet baklava.', 
+        iconType: 'utensils' 
+      },
+      { 
+        time: '19:30', 
+        activity: 'Refuel Vito Van (Diesel) & Return to Rental Desk', 
+        location: 'TIA Terminal', 
+        details: 'Top off Vito diesel tank (£100 allocated in budget), drop off van keys with rental agent, and clear airport security.', 
+        iconType: 'van' 
+      },
+      { 
+        time: '22:50', 
+        activity: 'Ryanair Flight RK8289 Home to London STN', 
+        location: 'Departure Gate, TIA', 
+        details: 'Board return flight to London Stansted, concluding an unforgettable 4-day road trip across Albania under budget!', 
+        iconType: 'plane' 
+      },
     ],
   },
 ];

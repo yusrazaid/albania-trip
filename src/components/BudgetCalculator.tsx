@@ -65,7 +65,7 @@ export const BudgetCalculator: React.FC<BudgetCalculatorProps> = ({ isOpen, onCl
                 </span>
               </div>
               <p className="text-xs text-slate-400">
-                £200/person master ceiling • Total pool: £1,400 for {EXPEDITION_META.travelers} travelers
+                £200/person master ceiling • Total pool: £{FINANCIAL_BREAKDOWN.totalCap.toLocaleString()} for {EXPEDITION_META.travelers} travelers
               </p>
             </div>
           </div>
@@ -137,7 +137,7 @@ export const BudgetCalculator: React.FC<BudgetCalculatorProps> = ({ isOpen, onCl
                   <tr className="border-b border-slate-800 text-slate-400">
                     <th className="text-left py-2 font-semibold">Expense Category</th>
                     <th className="text-left py-2 font-semibold">Total Group</th>
-                    <th className="text-left py-2 font-semibold">Per Traveler (7)</th>
+                    <th className="text-left py-2 font-semibold">Per Traveler ({EXPEDITION_META.travelers})</th>
                     <th className="text-left py-2 font-semibold">Status</th>
                     <th className="text-left py-2 font-semibold">Logistics Reference</th>
                   </tr>
@@ -158,15 +158,15 @@ export const BudgetCalculator: React.FC<BudgetCalculatorProps> = ({ isOpen, onCl
                     <td className="py-2.5">Total Committed Upfront</td>
                     <td className="py-2.5 text-sky-400">{formatMoney(FINANCIAL_BREAKDOWN.totalCommitted)}</td>
                     <td className="py-2.5 text-sky-400">{formatMoney(FINANCIAL_BREAKDOWN.fixedPerPerson)}</td>
-                    <td className="py-2.5"><span className="tag tag-amber">43.0% of Cap</span></td>
-                    <td className="py-2.5 text-slate-400 text-[11px]">Includes all flights and private lodging for 8</td>
+                    <td className="py-2.5"><span className="tag tag-amber">37.5% of Cap</span></td>
+                    <td className="py-2.5 text-slate-400 text-[11px]">Includes all flights and private lodging for {EXPEDITION_META.travelers}</td>
                   </tr>
                   <tr className="bg-emerald-950/20 font-bold text-emerald-300">
                     <td className="py-2.5">Remaining Cash Pool</td>
                     <td className="py-2.5">{formatMoney(FINANCIAL_BREAKDOWN.remainingPool)}</td>
-                    <td className="py-2.5">{formatMoney(FINANCIAL_BREAKDOWN.remainingPool / 7)}</td>
+                    <td className="py-2.5">{formatMoney(FINANCIAL_BREAKDOWN.remainingPool / EXPEDITION_META.travelers)}</td>
                     <td className="py-2.5"><span className="tag">Reserved Cash</span></td>
-                    <td className="py-2.5 text-emerald-400/80 text-[11px]">Covers €140 desk car balance, fuel, and all dinners</td>
+                    <td className="py-2.5 text-emerald-400/80 text-[11px]">Vito fuel, spit-roast feast, teas, castle entries & dinners</td>
                   </tr>
                 </tbody>
               </table>
